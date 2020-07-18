@@ -1,6 +1,8 @@
 # BotDiscord
 Abandonned Bot for discord made by me :D June 2019 - July 2019
 
+Just to be clear you can't run this bot since you would need the database. The only way would be figuring it out and creating your own. This code is just to help those who want to know how to do or better understanding.
+
 Decided to post the script along some info that I wrote when I was developing:
 
 Some features may be in portuguese because I was doing it in english and I was going to translate it later.
