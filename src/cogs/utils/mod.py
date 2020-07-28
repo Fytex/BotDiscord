@@ -68,7 +68,6 @@ class ModData(DB):
         return any(role == self.mute_role for role in target.roles)
 
     async def mute(self, target, time):
-        print(time)
 
         await target.add_roles(self.mute_role)
         if time:
@@ -92,11 +91,10 @@ class ModData(DB):
                 await mute_task_cog.run_task()
 
     async def unmute(self, target):
-        print('stil unmuting')
+
         await target.remove_roles(self.mute_role)
-        print('removed role')
         await self.remove_time_from_db(target, event='mute')
-        print('nope')
+        
 
     async def remove_time_from_db(self, target=None, id=None, event=None):
         id = id or target.id
@@ -106,10 +104,8 @@ class ModData(DB):
 
         '''
         query_delete = 'DELETE FROM timers WHERE guild=$1 AND member=$2 AND event=$3'
-        print('b4 aquiring')
 
         async with self.client.db.acquire() as con:
-            print('acquires')
             await con.execute(query_delete, self.guild.id, id, event)
 
     async def setup_mute_role(self):
@@ -156,7 +152,6 @@ class ModData(DB):
         await self._send_to_db('ban_roles', roles)
 
     async def unban_by_id(self, id):
-        print('lets unban')
         user = discord.Object(id=id)
         try:
             await self.guild.unban(user)
